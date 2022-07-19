@@ -2,10 +2,10 @@ require([
     "esri/core/promiseUtils",
     "esri/identity/OAuthInfo",
     "esri/identity/IdentityManager",
-    "esri/WebMap",
+    "esri/Map",
     "esri/views/MapView",
     "esri/layers/FeatureLayer"
-], function (promiseUtils, OAuthInfo, esriId, WebMap, MapView, FeatureLayer) {
+], function (promiseUtils, OAuthInfo, esriId, Map, MapView, FeatureLayer) {
 
     //OAuth certification to access secure AGOL content
     const info = new OAuthInfo({
@@ -21,10 +21,17 @@ require([
             document.getElementById("appPanel").style.display = "block";
     });
 
-    const map = new WebMap({
+    const traconLayer = new FeatureLayer({
         portalItem: {
-            id: "8c6b38f29a654b08bc4a31059984dc50"
-        }
+            id: "383ab9e4787c4f8db81bd54988142db0"
+        },
+        popupEnable: true, 
+        outfields: ["*"],
+    })
+
+    const map = new Map({
+        basemap: "gray-vector",
+        layers: [traconLayer]
     });
 
     const view = new MapView({

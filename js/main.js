@@ -31,8 +31,7 @@ require([
     })
 
     const map = new Map({
-        basemap: "gray-vector",
-        layers: [traconLayer]
+        basemap: "gray-vector"
     });
 
     const view = new MapView({

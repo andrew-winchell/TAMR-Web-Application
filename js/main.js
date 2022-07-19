@@ -27,7 +27,12 @@ require([
             id: "383ab9e4787c4f8db81bd54988142db0"
         },
         popupEnable: true, 
-        outfields: ["*"]
+        outfields: ["*"],
+        renderer: {
+            type: "web-syle",
+            styleName: "EsriInfrastructureStyle",
+            name: "Radio_Antenna"
+        }
     })
 
     const map = new Map({

@@ -27,6 +27,20 @@ require([
         },
         popupEnable: true, 
         outfields: ["*"],
+        popupTemplate: {
+            title: "TRACON: {tracon_id}",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "stars_system",
+                            label: "STARS System"
+                        }
+                    ]
+                }
+            ]
+        }
     })
 
     const map = new Map({

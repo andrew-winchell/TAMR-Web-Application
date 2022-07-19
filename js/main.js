@@ -18,12 +18,8 @@ require([
 
     esriId.checkSignInStatus(info.portalUrl + "/sharing")
         .then(() => {
-            initializeApp();
+            document.getElementById("appPanel").style.display = "block";
     });
-    
-    function initializeApp() {
-        document.getElementById("appPanel").style.display = "block";
-    }
 
     const listLayer = new FeatureLayer({
         //AGOL portal item ID
@@ -34,7 +30,7 @@ require([
         //if no layerId provided, defaults to first layer in service
         //layerId: 0
         popupEnabled: true,
-        outFields: ["*"],
+        outFields: ["*"]
     });
     
 })

@@ -4,9 +4,9 @@ require([
     "esri/identity/IdentityManager",
     "esri/Map",
     "esri/views/SceneView",
-    "esri/layers/SceneLayer",
+    "esri/layers/FeatureLayer",
     "esri/symbols/WebStyleSymbol"
-], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, SceneLayer, WebStyleSymbol) {
+], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, WebStyleSymbol) {
 
     //OAuth certification to access secure AGOL content
     const info = new OAuthInfo({
@@ -23,7 +23,7 @@ require([
             document.getElementById("appPanel").style.display = "block";
     });
 
-    const traconLayer = new SceneLayer({
+    const traconLayer = new FeatureLayer({
         portalItem: {
             id: "383ab9e4787c4f8db81bd54988142db0"
         },

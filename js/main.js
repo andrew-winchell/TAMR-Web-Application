@@ -36,6 +36,11 @@ require([
 
     const view = new MapView({
         container: "appPanel",
-        map: map
+        map: map,
+        center: [-98.5795, 39.8283],
+        zoom: 3,
+        popup: {
+          autoOpenEnabled: true
+        }
     })
 })

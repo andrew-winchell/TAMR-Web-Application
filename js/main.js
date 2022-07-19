@@ -44,4 +44,7 @@ require([
           autoOpenEnabled: true
         }
     })
+
+    view.ui.add("select-by-rectangle", "top-left");
+    
 })

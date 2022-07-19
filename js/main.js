@@ -27,21 +27,7 @@ require([
             id: "383ab9e4787c4f8db81bd54988142db0"
         },
         popupEnable: true, 
-        outfields: ["*"],
-        popupTemplate: {
-            title: "TRACON: {tracon_id}",
-            content: [
-                {
-                    type: "fields",
-                    fieldInfos: [
-                        {
-                            fieldName: "stars_system",
-                            label: "STARS System"
-                        }
-                    ]
-                }
-            ]
-        }
+        outfields: ["*"]
     })
 
     const map = new Map({
@@ -51,6 +37,6 @@ require([
 
     const view = new MapView({
         container: "appPanel",
-        map: map,
+        map: map
     })
 })

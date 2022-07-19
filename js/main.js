@@ -5,8 +5,11 @@ require([
     "esri/Map",
     "esri/views/SceneView",
     "esri/layers/FeatureLayer",
-    "esri/symbols/WebStyleSymbol"
-], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, WebStyleSymbol) {
+    "esri/layers/GraphicsLayer",
+    "esri/widget/Sketch/SketchViewModel",
+    "esri/Graphic",
+    "esri/geometry/geometryEngineAsync"
+], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, GraphicsLayer, SketchViewModel, Graphic, geometryEngineAsync) {
 
     //OAuth certification to access secure AGOL content
     const info = new OAuthInfo({
@@ -49,5 +52,8 @@ require([
     //add ui elements
     view.ui.add("select-by-rectangle", "top-left");
     view.ui.add("clear-selection", "top-left");
+
+    const polygonGraphicsLayer = new GraphicsLayer();
+    map.add(polygonGraphicsLayer);
 
 })

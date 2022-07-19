@@ -4,8 +4,9 @@ require([
     "esri/identity/IdentityManager",
     "esri/Map",
     "esri/views/SceneView",
-    "esri/layers/FeatureLayer"
-], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer) {
+    "esri/layers/FeatureLayer",
+    "esri/symbols/WebStyleSymbol"
+], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, WebStyleSymbol) {
 
     //OAuth certification to access secure AGOL content
     const info = new OAuthInfo({

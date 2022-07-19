@@ -3,9 +3,9 @@ require([
     "esri/identity/OAuthInfo",
     "esri/identity/IdentityManager",
     "esri/Map",
-    "esri/views/MapView",
+    "esri/views/SceneView",
     "esri/layers/FeatureLayer"
-], function (promiseUtils, OAuthInfo, esriId, Map, MapView, FeatureLayer) {
+], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer) {
 
     //OAuth certification to access secure AGOL content
     const info = new OAuthInfo({
@@ -35,7 +35,7 @@ require([
         layers: [traconLayer]
     });
 
-    const view = new MapView({
+    const view = new SceneView({
         container: "viewDiv",
         map: map,
         center: [-98.5795, 39.8283],

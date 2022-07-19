@@ -11,6 +11,7 @@ require([
     const info = new OAuthInfo({
         appId: "W4kXv59v7lprJzUj",
         portalUrl: "http://cobecconsulting.maps.arcgis.com",
+        authNamespace: "portal_oauth_inline",
         flowtype: "auto",
         popup: false
     });

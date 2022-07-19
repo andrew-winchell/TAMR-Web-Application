@@ -1,8 +1,9 @@
 requestAnimationFrame([
     "esri/core/promiseUtils",
     "esri/identity/OAuthInfo",
-    "esri/identity/IdentityManager"
-], function (promiseUtils, OAuthInfo, esriId) {
+    "esri/identity/IdentityManager",
+    "esri/layers/FeatureLayer"
+], function (promiseUtils, OAuthInfo, esriId, FeatureLayer) {
 
     const info = new OAuthInfo({
         appId: "W4kXv59v7lprJzUj",
@@ -23,5 +24,32 @@ requestAnimationFrame([
     function initializeApp() {
         document.getElementById("appPanel").style.display = "block";
     }
+
+    const listLayer = new FeatureLayer({
+        //AGOL portal item ID
+        portalItem: {
+          id: "e0e2d6c68a2243b797ab2fd177567d4c"
+        },
+        refreshInterval: 0.1,
+        //if no layerId provided, defaults to first layer in service
+        //layerId: 0
+        popupEnabled: true,
+        outFields: ["*"],
+        //configure popup design
+        popupTemplate: {
+          title: "SITREP: {incident}",
+          content: [
+            {
+              type: "fields",
+              fieldInfos: [
+                {
+                  fieldName: "incident_name",
+                  label: "Incident Name"
+                }
+              ]
+            }
+          ]
+        }
+    });
     
 })

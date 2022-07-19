@@ -35,21 +35,6 @@ require([
         //layerId: 0
         popupEnabled: true,
         outFields: ["*"],
-        //configure popup design
-        popupTemplate: {
-          title: "SITREP: {incident}",
-          content: [
-            {
-              type: "fields",
-              fieldInfos: [
-                {
-                  fieldName: "incident_name",
-                  label: "Incident Name"
-                }
-              ]
-            }
-          ]
-        }
     });
     
 })

@@ -31,11 +31,12 @@ require([
     })
 
     const map = new Map({
-        basemap: "gray-vector"
+        basemap: "gray-vector",
+        layers: [traconLayer]
     });
 
     const view = new MapView({
-        container: "appPanel",
+        container: "viewDiv",
         map: map,
         center: [-98.5795, 39.8283],
         zoom: 3,

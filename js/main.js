@@ -4,9 +4,9 @@ require([
     "esri/identity/IdentityManager",
     "esri/Map",
     "esri/views/SceneView",
-    "esri/layers/FeatureLayer",
+    "esri/layers/SceneLayer",
     "esri/symbols/WebStyleSymbol"
-], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, WebStyleSymbol) {
+], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, SceneLayer, WebStyleSymbol) {
 
     //OAuth certification to access secure AGOL content
     const info = new OAuthInfo({
@@ -23,17 +23,12 @@ require([
             document.getElementById("appPanel").style.display = "block";
     });
 
-    const traconLayer = new FeatureLayer({
+    const traconLayer = new SceneLayer({
         portalItem: {
             id: "383ab9e4787c4f8db81bd54988142db0"
         },
         popupEnable: true, 
-        outfields: ["*"],
-        renderer: {
-            type: "web-syle",
-            styleName: "EsriInfrastructureStyle",
-            name: "Radio_Antenna"
-        }
+        outfields: ["*"]
     })
 
     const map = new Map({

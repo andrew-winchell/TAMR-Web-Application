@@ -187,7 +187,7 @@ require([
     const basemap = new Basemap({
         baseLayers: [
             new TileLayer({
-                url: "https://wtb.maptiles.arcgis.com/arcgis/rest/services/World_Terrain_Base/MapServer"
+                url: "https://wtb.maptiles.arcgis.com/arcgis/rest/services/World_Topo_Base/MapServer"
             })
         ]
     })

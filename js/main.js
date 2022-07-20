@@ -232,6 +232,8 @@ require([
             if(!objectIds.length) {
                 console.log("No features selected");
                 return;
+            } else {
+                console.log(objectIds)
             }
         })
 

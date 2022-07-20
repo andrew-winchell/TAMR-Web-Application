@@ -5,13 +5,10 @@ require([
     "esri/Map",
     "esri/views/SceneView",
     "esri/layers/FeatureLayer",
-    "esri/layers/GraphicsLayer",
-    "esri/widgets/Sketch/SketchViewModel",
-    "esri/Graphic",
-    "esri/geometry/geometryEngineAsync"
-], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, GraphicsLayer, SketchViewModel, Graphic, geometryEngineAsync) {
+    "esri/renderers/SimpleRenderer"
+], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, SimpleRenderer) {
 
-    //OAuth certification to access secure AGOL content
+    //OAuth certification process to access secure AGOL content
     const info = new OAuthInfo({
         appId: "W4kXv59v7lprJzUj",
         portalUrl: "http://cobecconsulting.maps.arcgis.com",
@@ -26,13 +23,30 @@ require([
             document.getElementById("appPanel").style.display = "block";
     });
 
+    //layer symbology
+    const traconRender = new SimpleRenderer({
+        type: "simple",
+        symbol: {
+            type: "simple-marker",
+            size: 8,
+            color: "green",
+            outline: {
+                width: 1,
+                color: "gray"
+            }
+        }
+    });
+
+    //each layer in the TAMR dataset
+    //11 layers total
     const traconLayer = new FeatureLayer({
         portalItem: {
             id: "383ab9e4787c4f8db81bd54988142db0"
         },
         layerId: 0,
         popupEnable: true, 
-        outfields: ["*"]
+        outfields: ["*"],
+        renderer: traconRender
     });
 
     const ltLayer = new FeatureLayer({

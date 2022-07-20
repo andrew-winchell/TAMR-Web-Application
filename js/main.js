@@ -140,9 +140,19 @@ require([
         }
     })
     
-    //add ui elements
+    //add select button to ui
     view.ui.add("select-by-rectangle", "top-left");
+    const selectBtn = document.getElementById("select-by-rectangle");
+
+    //add event listener to select button to close any popups and draw rectangle
+    selectBtn.addEventListener("click", () => {
+        view.popup.close();
+        SketchViewModel.create("rectangle");
+    });
+
     view.ui.add("clear-selection", "top-left");
+
+
 
     const polygonGraphicsLayer = new GraphicsLayer();
     map.add(polygonGraphicsLayer);

@@ -6,7 +6,7 @@ require([
     "esri/views/SceneView",
     "esri/layers/FeatureLayer",
     "esri/layers/GraphicsLayer",
-    "esri/widget/Sketch/SketchViewModel",
+    "esri/widgets/Sketch/SketchViewModel",
     "esri/Graphic",
     "esri/geometry/geometryEngineAsync"
 ], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, GraphicsLayer, SketchViewModel, Graphic, geometryEngineAsync) {

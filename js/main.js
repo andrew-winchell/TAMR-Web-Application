@@ -232,7 +232,7 @@ require([
         query.outFields = ["*"];
 
         traconLayer.queryFeatures(query).then((results) => {
-            console.log(results.features.length);
+            console.log(results.features);
         });
     }
 

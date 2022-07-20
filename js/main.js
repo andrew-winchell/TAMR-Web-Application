@@ -33,7 +33,7 @@ require([
         layerId: 0,
         popupEnable: true, 
         outfields: ["*"]
-    })
+    });
 
     const ltLayer = new FeatureLayer({
         portalItem: {
@@ -42,7 +42,7 @@ require([
         layerId: 1,
         popupEnable: true, 
         outfields: ["*"]
-    })
+    });
 
     const rtLayer = new FeatureLayer({
         portalItem: {
@@ -51,7 +51,7 @@ require([
         layerId: 2,
         popupEnable: true, 
         outfields: ["*"]
-    })
+    });
 
     const attendeesTable = new FeatureLayer({
         portalItem: {
@@ -60,7 +60,7 @@ require([
         layerId: 3,
         popupEnable: true, 
         outfields: ["*"]
-    })
+    });
 
     const traconTCWTable = new FeatureLayer({
         portalItem: {
@@ -69,7 +69,7 @@ require([
         layerId: 4,
         popupEnable: true, 
         outfields: ["*"]
-    })
+    });
 
     const dasiTable = new FeatureLayer({
         portalItem: {
@@ -78,7 +78,7 @@ require([
         layerId: 5,
         popupEnable: true, 
         outfields: ["*"]
-    })
+    });
 
     const traconTMUTable = new FeatureLayer({
         portalItem: {
@@ -87,7 +87,7 @@ require([
         layerId: 6,
         popupEnable: true, 
         outfields: ["*"]
-    })
+    });
 
     const ltTDWTable = new FeatureLayer({
         portalItem: {
@@ -96,7 +96,7 @@ require([
         layerId: 7,
         popupEnable: true, 
         outfields: ["*"]
-    })
+    });
 
     const rtTDWTable = new FeatureLayer({
         portalItem: {
@@ -105,7 +105,7 @@ require([
         layerId: 8,
         popupEnable: true, 
         outfields: ["*"]
-    })
+    });
 
     const rackTable = new FeatureLayer({
         portalItem: {
@@ -114,7 +114,7 @@ require([
         layerId: 9,
         popupEnable: true, 
         outfields: ["*"]
-    })
+    });
 
     const radarTable = new FeatureLayer({
         portalItem: {
@@ -123,7 +123,7 @@ require([
         layerId: 10,
         popupEnable: true, 
         outfields: ["*"]
-    })
+    });
 
     const map = new Map({
         basemap: "gray-vector",
@@ -138,7 +138,10 @@ require([
         popup: {
           autoOpenEnabled: true
         }
-    })
+    });
+
+    const polygonGraphicsLayer = new GraphicsLayer();
+    map.add(polygonGraphicsLayer);
     
     //add select button to ui
     view.ui.add("select-by-rectangle", "top-left");
@@ -147,14 +150,14 @@ require([
     //add event listener to select button to close any popups and draw rectangle
     selectBtn.addEventListener("click", () => {
         view.popup.close();
-        SketchViewModel.create("rectangle");
+        sketchViewModel.create("rectangle");
     });
 
     view.ui.add("clear-selection", "top-left");
 
-
-
-    const polygonGraphicsLayer = new GraphicsLayer();
-    map.add(polygonGraphicsLayer);
+    const sketchViewModel = new SketchViewModel({
+        view: view,
+        layer: polygonGraphicsLayer
+    });
 
 })

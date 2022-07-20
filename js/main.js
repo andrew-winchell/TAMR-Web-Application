@@ -214,28 +214,27 @@ require([
         }
     });
 
-    /*view.on("click", (event) => {
-        view.hitTest(event.screenPoint).then((response) => {
-            var graphics = response.results;
-            graphics.forEach((graphic) => {
-                console.log(graphic);
-            });
-        });
-    });*/
-
     view.on("click", (event) => {
-        let query = traconLayer.createQuery();
-        query.geometry = view.toMap(event);
-        query.distance = 2;
-        query.units = "miles";
-        query.spatialRelationship = "intersects";
-        query.returnGeometry = true;
-        query.outField = ["*"];
-
-        featureLayerView.queryFeatures(query)
-            .then((response) => {
-                console.log(response);
-        });
+        clearMap();
+        queryRelated(event);
     });
+
+    function queryRelated(screenPoint) {
+        const point = view.toMap(screenPoint);
+        console.log(point);
+
+        layer.queryObjectIds({
+            geometry: point,
+            spatialRelationship: "intersects",
+            returnGeometry: false,
+            outFields: ["*"]
+        }).then((objectIds) => {
+            if(!objectIds.length) {
+                console.log("No features selected");
+                return;
+            }
+        })
+
+    }
 
 })

@@ -87,6 +87,10 @@ require([
         portalItem: {
             id: "383ab9e4787c4f8db81bd54988142db0"
         },
+        elevationInfo: {
+            mode: "relative-to-ground",
+            offset: 3
+        },
         layerId: 1,
         popupEnable: true, 
         outfields: ["*"],
@@ -96,6 +100,10 @@ require([
     const rtLayer = new FeatureLayer({
         portalItem: {
             id: "383ab9e4787c4f8db81bd54988142db0"
+        },
+        elevationInfo: {
+            mode: "relative-to-ground",
+            offset: 3
         },
         layerId: 2,
         popupEnable: true, 

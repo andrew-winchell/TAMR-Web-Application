@@ -223,7 +223,7 @@ require([
     });
 
     function queryRelated(screenPoint) {
-        let query = traconLayer.createQuery();
+        /*let query = traconLayer.createQuery();
         query.geometry = view.toMap(screenPoint);
         query.distance = 15;
         query.units = "miles";
@@ -233,7 +233,19 @@ require([
 
         traconLayer.queryFeatures(query).then((results) => {
             console.log(results.features[0].attributes["tracon_name"]);
-        });
+        });*/
+
+        view.hitTest(screenPoint).then((response) => {
+            const graphicsHit = response.results?.filter(
+                (hitResult) => hitResult.type ==="graphic" && hitResult.graphic.layer === traconLayer
+            );
+        })
+        if (graphicHits?.length > 0) {
+            // do something with the myLayer features returned from hittest
+            graphicHits.forEach((graphicHit) => {
+               console.log(graphicHit.graphic.attributes);
+            });
+        }
     }
 
     function clearMap() {

@@ -224,9 +224,8 @@ require([
 
     function queryRelated(screenPoint) {
         let query = traconLayer.createQuery();
-        console.log(query);
         query.geometry = view.toMap(screenPoint);
-        query.distance = 5;
+        query.distance = 15;
         query.units = "miles";
         query.spatialRelationship = "intersects";
         query.returnGeometry = true;

@@ -233,27 +233,7 @@ require([
 
         traconLayer.queryFeatures(query).then((results) => {
             console.log(results.features.length);
-        })
-
-        /*
-        const geometry = view.toMap(screenPoint);
-        console.log(geometry);
-
-        traconLayer.queryObjectIds({
-            geometry: geometry,
-            spatialRelationship: "intersects",
-            returnGeometry: false,
-            outFields: ["*"]
-        }).then((objectIds) => {
-            if(!objectIds.length) {
-                console.log("No features selected");
-                return;
-            } else {
-                console.log(objectIds)
-            }
-        })
-        */
-
+        });
     }
 
     function clearMap() {

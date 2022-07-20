@@ -230,7 +230,7 @@ require([
             if (graphicsHit?.length > 0) {
                 // do something with the myLayer features returned from hittest
                 graphicsHit.forEach((graphicsHit) => {
-                   console.log(graphicsHit.graphic);
+                   console.log(graphicsHit.graphic.attributes["objectid"]);
                 });
             }
         });

@@ -6,8 +6,11 @@ require([
     "esri/views/SceneView",
     "esri/layers/FeatureLayer",
     "esri/renderers/SimpleRenderer",
-    "esri/rest/support/Query"
-], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, SimpleRenderer, Query) {
+    "esri/rest/support/Query",
+    "esri/Basemap",
+    "esri/layers/TileLayer",
+    "esri/layers/ElevationLayer"
+], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, SimpleRenderer, Query, Basemap, TileLayer, ElevationLayer) {
 
     //OAuth certification process to access secure AGOL content
     const info = new OAuthInfo({
@@ -168,9 +171,24 @@ require([
         outfields: ["*"]
     });
 
+    //world topo basemap layer
+    const basemap = new Basemap({
+        baseLayers: [
+            new TileLayer({
+                url: "https://wtb.maptiles.arcgis.com/arcgis/rest/services/World_Topo_Base/MapServer"
+            })
+        ]
+    })
+
     const map = new Map({
-        basemap: "gray-vector",
-        layers: [traconLayer, ltLayer, rtLayer]
+        ground: {
+            layers: [
+                new ElevationLayer({
+                    url: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
+                })
+            ],
+        basemap: basemap
+        //layers: [traconLayer, ltLayer, rtLayer]
     });
 
     const view = new SceneView({

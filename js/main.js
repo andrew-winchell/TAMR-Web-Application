@@ -5,8 +5,9 @@ require([
     "esri/Map",
     "esri/views/SceneView",
     "esri/layers/FeatureLayer",
-    "esri/renderers/SimpleRenderer"
-], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, SimpleRenderer) {
+    "esri/renderers/SimpleRenderer",
+    "esri/rest/support/Query"
+], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, SimpleRenderer, Query) {
 
     //OAuth certification process to access secure AGOL content
     const info = new OAuthInfo({
@@ -182,12 +183,27 @@ require([
         }
     });
 
-    view.on("click", (event) => {
+    /*view.on("click", (event) => {
         view.hitTest(event.screenPoint).then((response) => {
             var graphics = response.results;
             graphics.forEach((graphic) => {
                 console.log(graphic);
             });
+        });
+    });*/
+
+    view.on("click", (event) => {
+        let query = traconLayer.createQuery();
+        query.geometry = view.toMap(event);
+        query.distance = 2;
+        query.units = "miles";
+        query.spatialRelationship = "intersects";
+        query.returnGeometry = true;
+        query.outField = ["*"];
+
+        featureLayerView.queryFeatures(query)
+            .then((response) => {
+                console.log(response);
         });
     });
 

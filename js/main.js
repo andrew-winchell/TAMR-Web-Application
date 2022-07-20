@@ -192,8 +192,8 @@ require([
                 })
             ]
         },
-        basemap: basemap
-        //layers: [traconLayer, ltLayer, rtLayer]
+        basemap: basemap,
+        layers: [traconLayer, ltLayer, rtLayer]
     });
 
     const view = new SceneView({

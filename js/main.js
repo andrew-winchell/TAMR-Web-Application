@@ -223,18 +223,6 @@ require([
     });
 
     function queryRelated(screenPoint) {
-        /*let query = traconLayer.createQuery();
-        query.geometry = view.toMap(screenPoint);
-        query.distance = 15;
-        query.units = "miles";
-        query.spatialRelationship = "intersects";
-        query.returnGeometry = true;
-        query.outFields = ["*"];
-
-        traconLayer.queryFeatures(query).then((results) => {
-            console.log(results.features[0].attributes["tracon_name"]);
-        });*/
-
         view.hitTest(screenPoint).then((response) => {
             const graphicsHit = response.results?.filter(
                 (hitResult) => hitResult.type ==="graphic" && hitResult.graphic.layer === traconLayer
@@ -242,7 +230,7 @@ require([
             if (graphicsHit?.length > 0) {
                 // do something with the myLayer features returned from hittest
                 graphicsHit.forEach((graphicsHit) => {
-                   console.log(graphicsHit.graphic.attributes);
+                   console.log(graphicsHit.graphic);
                 });
             }
         });

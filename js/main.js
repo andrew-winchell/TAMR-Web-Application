@@ -30,6 +30,97 @@ require([
         portalItem: {
             id: "383ab9e4787c4f8db81bd54988142db0"
         },
+        layerId: 0,
+        popupEnable: true, 
+        outfields: ["*"]
+    })
+
+    const ltLayer = new FeatureLayer({
+        portalItem: {
+            id: "383ab9e4787c4f8db81bd54988142db0"
+        },
+        layerId: 1,
+        popupEnable: true, 
+        outfields: ["*"]
+    })
+
+    const rtLayer = new FeatureLayer({
+        portalItem: {
+            id: "383ab9e4787c4f8db81bd54988142db0"
+        },
+        layerId: 2,
+        popupEnable: true, 
+        outfields: ["*"]
+    })
+
+    const attendeesTable = new FeatureLayer({
+        portalItem: {
+            id: "383ab9e4787c4f8db81bd54988142db0"
+        },
+        layerId: 3,
+        popupEnable: true, 
+        outfields: ["*"]
+    })
+
+    const traconTCWTable = new FeatureLayer({
+        portalItem: {
+            id: "383ab9e4787c4f8db81bd54988142db0"
+        },
+        layerId: 4,
+        popupEnable: true, 
+        outfields: ["*"]
+    })
+
+    const dasiTable = new FeatureLayer({
+        portalItem: {
+            id: "383ab9e4787c4f8db81bd54988142db0"
+        },
+        layerId: 5,
+        popupEnable: true, 
+        outfields: ["*"]
+    })
+
+    const traconTMUTable = new FeatureLayer({
+        portalItem: {
+            id: "383ab9e4787c4f8db81bd54988142db0"
+        },
+        layerId: 6,
+        popupEnable: true, 
+        outfields: ["*"]
+    })
+
+    const ltTDWTable = new FeatureLayer({
+        portalItem: {
+            id: "383ab9e4787c4f8db81bd54988142db0"
+        },
+        layerId: 7,
+        popupEnable: true, 
+        outfields: ["*"]
+    })
+
+    const rtTDWTable = new FeatureLayer({
+        portalItem: {
+            id: "383ab9e4787c4f8db81bd54988142db0"
+        },
+        layerId: 8,
+        popupEnable: true, 
+        outfields: ["*"]
+    })
+
+    const rackTable = new FeatureLayer({
+        portalItem: {
+            id: "383ab9e4787c4f8db81bd54988142db0"
+        },
+        layerId: 9,
+        popupEnable: true, 
+        outfields: ["*"]
+    })
+
+    const radarTable = new FeatureLayer({
+        portalItem: {
+            id: "383ab9e4787c4f8db81bd54988142db0"
+        },
+        layerId: 10,
         popupEnable: true, 
         outfields: ["*"]
     })

@@ -226,21 +226,15 @@ require([
         let query = traconLayer.createQuery();
         console.log(query);
         query.geometry = view.toMap(screenPoint);
-        query.distance = 2;
+        query.distance = 5;
         query.units = "miles";
         query.spatialRelationship = "intersects";
         query.returnGeometry = true;
         query.outFields = ["*"];
 
         traconLayer.queryFeatures(query).then((results) => {
-            console.log(results);
+            console.log(results.features.length);
         })
-
-
-
-
-
-
 
         /*
         const geometry = view.toMap(screenPoint);

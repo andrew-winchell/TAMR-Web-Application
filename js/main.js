@@ -134,7 +134,7 @@ require([
         container: "viewDiv",
         map: map,
         center: [-98.5795, 39.8283],
-        zoom: 6,
+        zoom: 5,
         popup: {
           autoOpenEnabled: true
         }

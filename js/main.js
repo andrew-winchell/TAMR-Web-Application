@@ -27,6 +27,9 @@ require([
             document.getElementById("appPanel").style.display = "block";
     });
 
+    // Initialize variables
+    let highlight, grid;
+
     //layer symbology
     const traconRender = {
         type: "simple",
@@ -245,6 +248,5 @@ require([
         if (grid) {
           grid.destroy();
         }
-        clearbutton.style.display = "none";
     }
 })

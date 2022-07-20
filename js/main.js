@@ -140,24 +140,13 @@ require([
         }
     });
 
-    const polygonGraphicsLayer = new GraphicsLayer();
-    map.add(polygonGraphicsLayer);
-    
-    //add select button to ui
-    view.ui.add("select-by-rectangle", "top-left");
-    const selectBtn = document.getElementById("select-by-rectangle");
-
-    //add event listener to select button to close any popups and draw rectangle
-    selectBtn.addEventListener("click", () => {
-        view.popup.close();
-        sketchViewModel.create("rectangle");
-    });
-
-    view.ui.add("clear-selection", "top-left");
-
-    const sketchViewModel = new SketchViewModel({
-        view: view,
-        layer: polygonGraphicsLayer
+    view.on("click", (event) => {
+        view.hitTest(event.screenPoint).then((response) => {
+            var graphics = response.results;
+            graphics.forEach((graphic) => {
+                console.log(graphic);
+            });
+        });
     });
 
 })

@@ -73,6 +73,10 @@ require([
         portalItem: {
             id: "383ab9e4787c4f8db81bd54988142db0"
         },
+        elevationInfo: {
+            mode: "relative-to-ground",
+            offset: 3
+        },
         layerId: 0,
         popupEnable: true, 
         outfields: ["*"],
@@ -186,7 +190,8 @@ require([
                 new ElevationLayer({
                     url: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
                 })
-            ],
+            ]
+        },
         basemap: basemap
         //layers: [traconLayer, ltLayer, rtLayer]
     });

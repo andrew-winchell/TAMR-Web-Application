@@ -24,18 +24,44 @@ require([
     });
 
     //layer symbology
-    const traconRender = new SimpleRenderer({
+    const traconRender = {
         type: "simple",
         symbol: {
             type: "simple-marker",
             size: 8,
+            color: "blue",
+            outline: {
+                width: 1,
+                color: "gray"
+            }
+        }
+    };
+
+    const ltRender = {
+        type: "simple",
+        symbol: {
+            type: "simple-marker",
+            size: 6,
             color: "green",
             outline: {
                 width: 1,
                 color: "gray"
             }
         }
-    });
+    };
+
+    const rtRender = {
+        type: "simple",
+        symbol: {
+            type: "simple-marker",
+            size: 6,
+            color: "red",
+            outline: {
+                width: 1,
+                color: "gray"
+            }
+        }
+    };
 
     //each layer in the TAMR dataset
     //11 layers total

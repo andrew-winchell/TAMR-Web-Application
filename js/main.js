@@ -223,11 +223,27 @@ require([
     });
 
     function queryRelated(screenPoint) {
-        const point = view.toMap(screenPoint);
-        console.log(point);
+        let query = traconLayer.createQuery();
+        console.log(query);
+        query.geometry = view.toMap(screenPoint);
+        query.distance = 2;
+        query.units = "miles";
+        query.spatialRelationship = "intersects";
+        query.returnGeometry = true;
+        query.outFields = ["*"];
+        
+
+
+
+
+
+
+        /*
+        const geometry = view.toMap(screenPoint);
+        console.log(geometry);
 
         traconLayer.queryObjectIds({
-            geometry: point,
+            geometry: geometry,
             spatialRelationship: "intersects",
             returnGeometry: false,
             outFields: ["*"]
@@ -239,6 +255,8 @@ require([
                 console.log(objectIds)
             }
         })
+        */
+
     }
 
     function clearMap() {

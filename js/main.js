@@ -231,7 +231,11 @@ require([
         query.spatialRelationship = "intersects";
         query.returnGeometry = true;
         query.outFields = ["*"];
-        
+
+        traconLayer.queryFeatures(query).then((results) => {
+            console.log(results);
+        })
+
 
 
 

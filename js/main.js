@@ -236,7 +236,15 @@ require([
                 console.log(objectIds)
             }
         })
-
     }
 
+    function clearMap() {
+        if (highlight) {
+          highlight.remove();
+        }
+        if (grid) {
+          grid.destroy();
+        }
+        clearbutton.style.display = "none";
+    }
 })

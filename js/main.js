@@ -226,7 +226,7 @@ require([
         const point = view.toMap(screenPoint);
         console.log(point);
 
-        layer.queryObjectIds({
+        traconLayer.queryObjectIds({
             geometry: point,
             spatialRelationship: "intersects",
             returnGeometry: false,

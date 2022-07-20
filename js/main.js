@@ -239,13 +239,13 @@ require([
             const graphicsHit = response.results?.filter(
                 (hitResult) => hitResult.type ==="graphic" && hitResult.graphic.layer === traconLayer
             );
-        })
-        if (graphicsHit?.length > 0) {
-            // do something with the myLayer features returned from hittest
-            graphicsHit.forEach((graphicsHit) => {
-               console.log(graphicsHit.graphic.attributes);
-            });
-        }
+            if (graphicsHit?.length > 0) {
+                // do something with the myLayer features returned from hittest
+                graphicsHit.forEach((graphicsHit) => {
+                   console.log(graphicsHit.graphic.attributes);
+                });
+            }
+        });
     }
 
     function clearMap() {

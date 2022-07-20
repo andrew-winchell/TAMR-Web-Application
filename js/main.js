@@ -81,7 +81,8 @@ require([
         },
         layerId: 1,
         popupEnable: true, 
-        outfields: ["*"]
+        outfields: ["*"],
+        renderer: ltRender
     });
 
     const rtLayer = new FeatureLayer({
@@ -90,7 +91,8 @@ require([
         },
         layerId: 2,
         popupEnable: true, 
-        outfields: ["*"]
+        outfields: ["*"],
+        renderer: rtRender
     });
 
     const attendeesTable = new FeatureLayer({
@@ -167,7 +169,7 @@ require([
 
     const map = new Map({
         basemap: "gray-vector",
-        layers: [traconLayer]
+        layers: [traconLayer, ltLayer, rtLayer]
     });
 
     const view = new SceneView({

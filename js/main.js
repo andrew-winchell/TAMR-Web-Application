@@ -240,10 +240,10 @@ require([
                 (hitResult) => hitResult.type ==="graphic" && hitResult.graphic.layer === traconLayer
             );
         })
-        if (graphicHits?.length > 0) {
+        if (graphicsHit?.length > 0) {
             // do something with the myLayer features returned from hittest
-            graphicHits.forEach((graphicHit) => {
-               console.log(graphicHit.graphic.attributes);
+            graphicsHit.forEach((graphicsHit) => {
+               console.log(graphicsHit.graphic.attributes);
             });
         }
     }

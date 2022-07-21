@@ -240,24 +240,28 @@ require([
                     (hitResult) => hitResult.type ==="graphic" && hitResult.graphic.layer === traconLayer
                 );
                 if (graphicsHit?.length > 0) {
-                    // do something with the traconLayer features returned from hittest
+                    let featureSet = [];
                     graphicsHit.forEach((graphicsHit) => {
                         const objectIds = graphicsHit.graphic.attributes["objectid"];
-                        filterSelectedLayers(objectIds);
+                        featureSet.push(objectIds)
                     });
+                    filterSelectedLayers(featureSet);
                 }
             });
     }
 
-    function filterSelectedLayers(objectId) {
-        if(objectId > 0) {
-            let sqlExp = "objectid = " + objectId;
+    function filterSelectedLayers(objectIds) {
+        if(objectIds.length > 0) {
+            let oidString = objectIds.join(", ");
+            console.log(objectIds);
+            console.log(objectIds.join(", "))
+            let sqlExp = "objectid IN (" + oidString + ")";
             traconLayer.definitionExpression = sqlExp;
             const selectedFeature = traconLayer.queryFeatures({
-                where: "objectid = " + objectId,
+                where: "objectid IN (" + oidString + ")",
                 outFields: ["*"]
-            }).then((feature) => {
-                console.log(feature.fields["globalid"]);
+            }).then((features) => {
+                console.log(features);
             });
         }        
     }

@@ -253,12 +253,10 @@ require([
     function filterSelectedLayers(objectIds) {
         if(objectIds.length > 0) {
             let oidString = objectIds.join(", ");
-            console.log(objectIds);
-            console.log(objectIds.join(", "))
             let sqlExp = "objectid IN (" + oidString + ")";
             traconLayer.definitionExpression = sqlExp;
             const selectedFeature = traconLayer.queryFeatures({
-                where: "objectid IN (" + oidString + ")",
+                where: sqlExp,
                 outFields: ["*"]
             }).then((features) => {
                 console.log(features);

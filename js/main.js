@@ -263,7 +263,7 @@ require([
                 outFields: ["*"]
             }).then((feature) => {
                 for (let f in feature.features) {
-                    console.log(f.attributes);
+                    console.log(f);
                 }
             });
         }       

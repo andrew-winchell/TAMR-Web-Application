@@ -228,9 +228,9 @@ require([
                 (hitResult) => hitResult.type ==="graphic" && hitResult.graphic.layer === traconLayer
             );
             if (graphicsHit?.length > 0) {
-                // do something with the myLayer features returned from hittest
+                // do something with the traconLayer features returned from hittest
                 graphicsHit.forEach((graphicsHit) => {
-                   console.log(graphicsHit.graphic.attributes["objectid"]);
+                   const objectIds = graphicsHit.graphic.attributes["objectid"];
                 });
             }
         });
@@ -243,5 +243,7 @@ require([
         if (grid) {
           grid.destroy();
         }
+        ltLayer.visible = false;
+        rtLayer.visible = false;
     }
 })

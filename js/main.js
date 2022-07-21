@@ -253,12 +253,15 @@ require([
     }
 
     function filterSelectedLayers(objectIds) {
+        //run layer filtering if at least one tracon was selected
         if(objectIds.length > 0) {
+            let globalidSet = [];
+            //get selected objectids as a comma list and pass into sql expression
             let oidString = objectIds.join(", ");
             let oidExp = "objectid IN (" + oidString + ")";
-            let featureSet;
-            let globalidSet = [];
+            //set definition expression on tracon layer using generated sql expression
             traconLayer.definitionExpression = oidExp;
+
             /*const selectedFeature = traconLayer.queryFeatures({
                 where: oidExp,
                 outFields: ["*"]

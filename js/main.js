@@ -99,7 +99,7 @@ require([
         popupEnable: true, 
         outfields: ["*"],
         renderer: ltRender,
-        definitionExpression: "1=1"
+        definitionExpression: "1=0"
     });
 
     const rtLayer = new FeatureLayer({
@@ -114,7 +114,7 @@ require([
         popupEnable: true, 
         outfields: ["*"],
         renderer: rtRender,
-        definitionExpression: "1=1"
+        definitionExpression: "1=0"
     });
 
     const attendeesTable = new FeatureLayer({
@@ -272,7 +272,7 @@ require([
                 }
                 let gidString = globalidSet.join(", ");
                 console.log(gidString)
-                let gidExp = "parentglobalid IN (" + gidString + ")";
+                let gidExp = "parentglobalid = " + gidString;
                 ltLayer.definitionExpression = gidExp;
                 rtLayer.definitionExpression = gidExp;
             });

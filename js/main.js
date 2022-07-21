@@ -257,7 +257,7 @@ require([
                 where: "objectid = " + objectId,
                 outFields: ["*"]
             }).then((feature) => {
-                console.log(feature);
+                console.log(feature.fields["globalid"]);
             });
         }        
     }

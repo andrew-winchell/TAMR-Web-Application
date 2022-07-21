@@ -236,13 +236,20 @@ require([
                    const objectIds = graphicsHit.graphic.attributes["objectid"];
                    filterSelectedLayers(objectIds);
                 });
+            } else {
+                filterSelectedLayers(0);
             }
         });
     }
 
     function filterSelectedLayers(objectId) {
-        let sqlExp = "objectid = " + objectId;
-        traconLayer.definitionExpression = sqlExp;
+        if(objectId > 0) {
+            let sqlExp = "objectid = " + objectId;
+            traconLayer.definitionExpression = sqlExp;
+        } else {
+            traconLayer.definitionExpression = "1=1"
+        }
+        
     }
 
     function clearMap() {

@@ -262,7 +262,7 @@ require([
             }).then((features) => {featureSet = features});
             featureSet.forEach((f) => {
                 console.log(f.feature);
-            }
+            });
         }        
     }
 

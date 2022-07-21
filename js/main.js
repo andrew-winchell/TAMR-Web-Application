@@ -262,7 +262,7 @@ require([
             //set definition expression on tracon layer using generated sql expression
             traconLayer.definitionExpression = oidExp;
 
-            /*const selectedFeature = traconLayer.queryFeatures({
+            traconLayer.queryFeatures({
                 where: oidExp,
                 outFields: ["*"]
             }).then((feature) => {
@@ -274,7 +274,7 @@ require([
                 let gidExp = "parentglobalid IN (" + gidString + ")";
                 ltLayer.definitionExpression = gidExp;
                 rtLayer.definitionExpression = gidExp;
-            });*/
+            });
         }       
     }
 

@@ -83,7 +83,8 @@ require([
         layerId: 0,
         popupEnable: true, 
         outfields: ["*"],
-        renderer: traconRender
+        renderer: traconRender,
+        definitionExpression: "1=1"
     });
 
     const ltLayer = new FeatureLayer({
@@ -97,7 +98,8 @@ require([
         layerId: 1,
         popupEnable: true, 
         outfields: ["*"],
-        renderer: ltRender
+        renderer: ltRender,
+        definitionExpression: "1=0"
     });
 
     const rtLayer = new FeatureLayer({
@@ -111,7 +113,8 @@ require([
         layerId: 2,
         popupEnable: true, 
         outfields: ["*"],
-        renderer: rtRender
+        renderer: rtRender,
+        definitionExpression: "1=0"
     });
 
     const attendeesTable = new FeatureLayer({
@@ -231,9 +234,15 @@ require([
                 // do something with the traconLayer features returned from hittest
                 graphicsHit.forEach((graphicsHit) => {
                    const objectIds = graphicsHit.graphic.attributes["objectid"];
+                   filterSelectedLayers(objectIds);
                 });
             }
         });
+    }
+
+    function filterSelectedLayers(objectId) {
+        let sqlExp = "objectid = " + objectId;
+        traconLayer.definitionExpression = sqlExp;
     }
 
     function clearMap() {
@@ -243,7 +252,5 @@ require([
         if (grid) {
           grid.destroy();
         }
-        ltLayer.visible = false;
-        rtLayer.visible = false;
     }
 })

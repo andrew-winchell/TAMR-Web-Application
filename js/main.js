@@ -262,7 +262,9 @@ require([
                 where: sqlExp,
                 outFields: ["*"]
             }).then((feature) => {
-                console.log(feature)
+                for (let f in feature.features) {
+                    console.log(f.attributes["globalid"]);
+                }
             });
         }       
     }

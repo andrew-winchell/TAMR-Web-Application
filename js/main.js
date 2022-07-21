@@ -264,13 +264,13 @@ require([
                 outFields: ["*"]
             }).then((feature) => {
                 for (let f of feature.features) {
-                    console.log(typeof(f.attributes.globalid), f.attributes.globalid);
-                    globalidSet.push(f.attributes.globalid);
+                    let fGlobalId = f.attributes.globalid
+                    globalidSet.push(fGlobalId);
                 }
+                console.log(globalidSet, globalidSet.join(", "))
+                let gidExp = "parentglobalid IN (" + globalidSet.join(", ") + ")";
+                ltLayer.definitionExpression = gidExp;
             });
-            console.log(globalidSet, globalidSet.join(", "))
-            let gidExp = "parentglobalid IN (" + globalidSet.join(", ") + ")";
-            ltLayer.definitionExpression = gidExp;
         }       
     }
 

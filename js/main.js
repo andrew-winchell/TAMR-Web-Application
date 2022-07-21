@@ -299,24 +299,14 @@ require([
                     ltLayer.definitionExpression = gidExp;
                     rtLayer.definitionExpression = gidExp;
                     
-                    var ltExtent, rtExtent;
-                    ltLayer
-                        .when(() => {
-                            return ltLayer.queryExtent();
-                        })
-                        .then((response) => {
-                            ltWidth = response.extent;
-                            console.log(ltExtent);
-                        });
+                    
                     rtLayer
                         .when(() => {
                             return ltLayer.queryExtent();
                         })
                         .then((response) => {
-                            rtExtent = response.extent;
-                            console.log(rtExtent);
+                            view.goTo(response.extent);
                         });
-                    view.goTo(rtExtent)
                 });
         }       
     }

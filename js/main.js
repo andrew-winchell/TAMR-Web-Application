@@ -293,15 +293,15 @@ require([
                 //set definitionExpression to match towers to selected tracon
                 ltLayer.definitionExpression = gidExp;
                 rtLayer.definitionExpression = gidExp;
+                
+                rtLayer
+                    .when(() => {
+                        return rtLayer.queryExtent();
+                    })
+                    .then((response) => {
+                        view.goTo(response.extent);
+                    });
             });
-
-            rtLayer
-                .when(() => {
-                    return rtLayer.queryExtent();
-                })
-                .then((response) => {
-                    view.goTo(response.extent);
-                });
         }       
     }
 

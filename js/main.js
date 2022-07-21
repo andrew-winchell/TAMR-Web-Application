@@ -259,10 +259,10 @@ require([
             const selectedFeature = traconLayer.queryFeatures({
                 where: sqlExp,
                 outFields: ["*"]
-            }).then((features) => {
-                console.log(typeof(features), features)
+            }).then((feature) => {
+                console.log(feature.features)
             });
-        }        
+        }       
     }
 
     function clearMap() {

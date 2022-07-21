@@ -255,8 +255,7 @@ require([
             traconLayer.definitionExpression = sqlExp;
             const selectedFeature = traconLayer.queryFeatures({
                 where: "objectid = " + objectId
-            })
-            console.log(selectedFeature);
+            }).then(console.log(selectedFeature));
         }        
     }
 

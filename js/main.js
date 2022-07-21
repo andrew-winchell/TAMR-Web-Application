@@ -256,6 +256,7 @@ require([
         //run layer filtering if at least one tracon was selected
         if(objectIds.length > 0) {
             let globalidSet = [];
+            let gidExp;
             //get selected objectids as a comma list and pass into sql expression
             let oidString = objectIds.join(", ");
             let oidExp = "objectid IN (" + oidString + ")";
@@ -272,10 +273,11 @@ require([
                 }
                 let gidString = globalidSet.join(", ");
                 console.log(gidString)
-                let gidExp = "parentglobalid = " + gidString;
-                ltLayer.definitionExpression = gidExp;
-                rtLayer.definitionExpression = gidExp;
+                gidExp = "parentglobalid = " + gidString;
             });
+            
+            ltLayer.definitionExpression = gidExp;
+            rtLayer.definitionExpression = gidExp;
         }       
     }
 

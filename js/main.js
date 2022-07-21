@@ -299,7 +299,7 @@ require([
                     ltLayer.definitionExpression = gidExp;
                     rtLayer.definitionExpression = gidExp;
                     
-                    let ltExtent, rtExtent;
+                    var ltExtent, rtExtent;
                     ltLayer
                         .when(() => {
                             return ltLayer.queryExtent();

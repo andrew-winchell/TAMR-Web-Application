@@ -9,8 +9,9 @@ require([
     "esri/rest/support/Query",
     "esri/Basemap",
     "esri/layers/TileLayer",
-    "esri/layers/ElevationLayer"
-], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, SimpleRenderer, Query, Basemap, TileLayer, ElevationLayer) {
+    "esri/layers/ElevationLayer",
+    "esri/widgets/Home"
+], function (promiseUtils, OAuthInfo, esriId, Map, SceneView, FeatureLayer, SimpleRenderer, Query, Basemap, TileLayer, ElevationLayer, Home) {
 
     //OAuth certification process to access secure AGOL content
     const info = new OAuthInfo({
@@ -206,11 +207,9 @@ require([
                 })
             ]
         },
-        basemap: basemap
+        basemap: basemap,
+        layers: [traconLayer, ltLayer, rtLayer]
     });
-    map.add(traconLayer);
-    map.add(ltLayer);
-    map.add(rtLayer);
 
     const view = new SceneView({
         container: "viewDiv",
@@ -222,8 +221,15 @@ require([
         }
     });
 
+    const homeBtn = new Home({
+        view: view
+    });
+
+    // Add the home button to the top left corner of the view
+    view.ui.add(homeBtn, "top-right");
+
     // add the clear selection button the view
-    view.ui.add("clear-selection", "top-left");
+    view.ui.add("clear-selection", "top-right");
     document
       .getElementById("clear-selection")
       .addEventListener("click", () => {

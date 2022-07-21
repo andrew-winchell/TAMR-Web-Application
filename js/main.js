@@ -263,7 +263,7 @@ require([
                 outFields: ["*"]
             }).then((feature) => {
                 for (let f of feature.features) {
-                    console.log(f);
+                    console.log(f.attributes.globalid);
                 }
             });
         }       

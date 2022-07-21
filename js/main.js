@@ -259,23 +259,32 @@ require([
         if(objectIds.length > 0) {
             let globalidSet = [];
             let gidExp;
+         
             //get selected objectids as a comma list and pass into sql expression
             let oidString = objectIds.join(", ");
             let oidExp = "objectid IN (" + oidString + ")";
+            
             //set definition expression on tracon layer using generated sql expression
             traconLayer.definitionExpression = oidExp;
 
+            //query out the selected features to get the globalid
             traconLayer.queryFeatures({
                 where: oidExp,
-                outFields: ["*"]
+                outFields: ["globalid"]
             }).then((feature) => {
+                //for each feature that was selected, pull the global id from attributes and push to array
                 for (let f of feature.features) {
                     let fGlobalId = f.attributes.globalid
                     globalidSet.push("'" + fGlobalId + "'");
                 }
+                
+                //stringify the globalidSet array separated with commas
                 let gidString = globalidSet.join(", ");
+                
+                //sql expression to filter lt and rt layers
                 gidExp = "parentglobalid IN (" + gidString + ")";
-                console.log(ltLayer, typeof(ltLayer));
+
+                //set definitionExpression to match towers to selected tracon
                 ltLayer.definitionExpression = gidExp;
                 rtLayer.definitionExpression = gidExp;
             });

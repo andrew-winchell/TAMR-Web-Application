@@ -228,11 +228,6 @@ require([
     // Add the home button to the top left corner of the view
     view.ui.add(homeBtn, "top-right");
 
-    homeBtn.on("click", (event) => {
-        view.center = [-98.5795, 39.8283];
-        view.zoom = 5;
-    });
-
     // add the clear selection button the view
     view.ui.add("clear-selection", "top-right");
     document
@@ -241,6 +236,8 @@ require([
         traconLayer.definitionExpression = "1=1";
         ltLayer.definitionExpression = "1=0";
         rtLayer.definitionExpression = "1=0";
+        view.center = [-98.5795, 39.8283];
+        view.zoom = 5;
     });
 
     view.on("click", (event) => {
@@ -319,7 +316,7 @@ require([
                             rtExtent = response.extent;
                             console.log(rtExtent);
                         });
-                    view.goTo(max([ltExtent, rtExtent]))
+                    view.goTo(rtExtent)
                 });
         }       
     }

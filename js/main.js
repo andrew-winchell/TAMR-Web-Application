@@ -99,7 +99,7 @@ require([
         popupEnable: true, 
         outfields: ["*"],
         renderer: ltRender,
-        definitionExpression: "1=0"
+        definitionExpression: "1=1"
     });
 
     const rtLayer = new FeatureLayer({
@@ -114,7 +114,7 @@ require([
         popupEnable: true, 
         outfields: ["*"],
         renderer: rtRender,
-        definitionExpression: "1=0"
+        definitionExpression: "1=1"
     });
 
     const attendeesTable = new FeatureLayer({

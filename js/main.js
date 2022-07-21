@@ -254,16 +254,15 @@ require([
         if(objectIds.length > 0) {
             let oidString = objectIds.join(", ");
             let sqlExp = "objectid IN (" + oidString + ")";
+            let featureSet;
             traconLayer.definitionExpression = sqlExp;
             const selectedFeature = traconLayer.queryFeatures({
                 where: sqlExp,
                 outFields: ["*"]
-            }).then((features) => {
-                features.forEach((feature) => {
-                    console.log(feature);
-                    console.log(feature.feature[0])
-                });
-            });
+            }).then((features) => {featureSet = features});
+            featureSet.forEach((f) => {
+                console.log(f.feature);
+            }
         }        
     }
 

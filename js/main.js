@@ -220,36 +220,40 @@ require([
         }
     });
 
+    // add the clear selection button the view
+    view.ui.add("clear-selection", "top-left");
+    document
+      .getElementById("clear-selection")
+      .addEventListener("click", () => {
+        traconLayer.definitionExpression = "1=1";
+    });
+
     view.on("click", (event) => {
         clearMap();
         queryRelated(event);
     });
 
     function queryRelated(screenPoint) {
-        view.hitTest(screenPoint).then((response) => {
-            const graphicsHit = response.results?.filter(
-                (hitResult) => hitResult.type ==="graphic" && hitResult.graphic.layer === traconLayer
-            );
-            if (graphicsHit?.length > 0) {
-                // do something with the traconLayer features returned from hittest
-                graphicsHit.forEach((graphicsHit) => {
-                   const objectIds = graphicsHit.graphic.attributes["objectid"];
-                   filterSelectedLayers(objectIds);
-                });
-            } else {
-                filterSelectedLayers(0);
-            }
-        });
+        view.hitTest(screenPoint)
+            .then((response) => {
+                const graphicsHit = response.results?.filter(
+                    (hitResult) => hitResult.type ==="graphic" && hitResult.graphic.layer === traconLayer
+                );
+                if (graphicsHit?.length > 0) {
+                    // do something with the traconLayer features returned from hittest
+                    graphicsHit.forEach((graphicsHit) => {
+                        const objectIds = graphicsHit.graphic.attributes["objectid"];
+                        filterSelectedLayers(objectIds);
+                    });
+                }
+            });
     }
 
     function filterSelectedLayers(objectId) {
         if(objectId > 0) {
             let sqlExp = "objectid = " + objectId;
             traconLayer.definitionExpression = sqlExp;
-        } else {
-            traconLayer.definitionExpression = "1=1"
-        }
-        
+        }        
     }
 
     function clearMap() {

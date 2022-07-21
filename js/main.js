@@ -260,6 +260,8 @@ require([
                 outFields: ["*"]
             }).then((features) => {
                 console.log(features);
+                console.log(features.features);
+                console.log(features.features.attributes["globalid"])
             });
         }        
     }

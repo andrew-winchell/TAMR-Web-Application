@@ -226,6 +226,8 @@ require([
       .getElementById("clear-selection")
       .addEventListener("click", () => {
         traconLayer.definitionExpression = "1=1";
+        ltLayer.definitionExpression = "1=0";
+        rtLayer.definitionExpression = "1=0";
     });
 
     view.on("click", (event) => {

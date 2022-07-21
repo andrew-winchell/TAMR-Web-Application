@@ -267,6 +267,7 @@ require([
                     globalidSet.push(f.attributes.globalid);
                 }
             });
+            console.log(globalidSet, globalidSet.join(", "))
             let gidExp = "parentglobalid IN (" + globalidSet.join(", ") + ")";
             ltLayer.definitionExpression = gidExp;
         }       

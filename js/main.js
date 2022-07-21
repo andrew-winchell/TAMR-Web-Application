@@ -228,6 +228,11 @@ require([
     // Add the home button to the top left corner of the view
     view.ui.add(homeBtn, "top-right");
 
+    homeBtn.on("click", (event) => {
+        view.center = [-98.5795, 39.8283];
+        view.zoom = 5;
+    });
+
     // add the clear selection button the view
     view.ui.add("clear-selection", "top-right");
     document

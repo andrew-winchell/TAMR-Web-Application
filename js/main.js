@@ -260,7 +260,7 @@ require([
                 where: sqlExp,
                 outFields: ["*"]
             }).then((feature) => {
-                console.log(feature.features)
+                console.log(feature)
             });
         }       
     }

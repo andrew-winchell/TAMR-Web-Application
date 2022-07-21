@@ -276,10 +276,10 @@ require([
                 let gidString = globalidSet.join(", ");
                 console.log(gidString)
                 gidExp = "parentglobalid = " + gidString;
+                console.log(ltLayer, typeof(ltLayer));
+                ltLayer.definitionExpression = gidExp;
+                rtLayer.definitionExpression = gidExp;
             });
-            console.log(gidExp);
-            ltLayer.definitionExpression = gidExp;
-            rtLayer.definitionExpression = gidExp;
         }       
     }
 

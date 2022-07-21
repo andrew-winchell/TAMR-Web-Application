@@ -255,7 +255,7 @@ require([
             traconLayer.definitionExpression = sqlExp;
             const selectedFeature = traconLayer.queryFeatures({
                 where: "objectid = " + objectId,
-                outfields: ["*"]
+                outFields: ["*"]
             }).then((feature) => {
                 console.log(feature[0]);
             });

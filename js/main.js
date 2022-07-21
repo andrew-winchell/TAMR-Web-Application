@@ -271,7 +271,7 @@ require([
             }).then((feature) => {
                 for (let f of feature.features) {
                     let fGlobalId = f.attributes.globalid
-                    globalidSet.push(fGlobalId);
+                    globalidSet.push("'" + fGlobalId + "'");
                 }
                 let gidString = globalidSet.join(", ");
                 console.log(gidString)

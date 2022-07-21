@@ -259,7 +259,7 @@ require([
             let featureSet;
             let globalidSet = [];
             traconLayer.definitionExpression = oidExp;
-            const selectedFeature = traconLayer.queryFeatures({
+            /*const selectedFeature = traconLayer.queryFeatures({
                 where: oidExp,
                 outFields: ["*"]
             }).then((feature) => {
@@ -271,7 +271,7 @@ require([
                 let gidExp = "parentglobalid IN (" + gidString + ")";
                 ltLayer.definitionExpression = gidExp;
                 rtLayer.definitionExpression = gidExp;
-            });
+            });*/
         }       
     }
 

@@ -262,7 +262,7 @@ require([
                 where: sqlExp,
                 outFields: ["*"]
             }).then((feature) => {
-                for (let f in feature) {
+                for (let f of feature) {
                     console.log(f);
                 }
             });

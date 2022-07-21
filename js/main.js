@@ -255,17 +255,20 @@ require([
     function filterSelectedLayers(objectIds) {
         if(objectIds.length > 0) {
             let oidString = objectIds.join(", ");
-            let sqlExp = "objectid IN (" + oidString + ")";
+            let oidExp = "objectid IN (" + oidString + ")";
             let featureSet;
-            traconLayer.definitionExpression = sqlExp;
+            let globalidSet = [];
+            traconLayer.definitionExpression = oidExp;
             const selectedFeature = traconLayer.queryFeatures({
-                where: sqlExp,
+                where: oidExp,
                 outFields: ["*"]
             }).then((feature) => {
                 for (let f of feature.features) {
-                    console.log(f.attributes.globalid);
+                    globalidSet.push(f.attributes.globalid);
                 }
             });
+            let gidExp = "parentglobalid IN (" + globalidSet.join(", ") + ")";
+            ltLayer.definitionExpression = gidExp;
         }       
     }
 

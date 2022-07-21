@@ -264,6 +264,7 @@ require([
                 outFields: ["*"]
             }).then((feature) => {
                 for (let f of feature.features) {
+                    console.log(typeof(f.attributes.globalid), f.attributes.globalid);
                     globalidSet.push(f.attributes.globalid);
                 }
             });

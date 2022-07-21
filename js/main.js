@@ -271,6 +271,7 @@ require([
                     globalidSet.push(fGlobalId);
                 }
                 let gidString = globalidSet.join(", ");
+                console.log(gidString)
                 let gidExp = "parentglobalid IN (" + gidString + ")";
                 ltLayer.definitionExpression = gidExp;
                 rtLayer.definitionExpression = gidExp;

@@ -277,7 +277,7 @@ require([
                 console.log(gidString)
                 gidExp = "parentglobalid = " + gidString;
             });
-            
+            console.log(gidExp);
             ltLayer.definitionExpression = gidExp;
             rtLayer.definitionExpression = gidExp;
         }       

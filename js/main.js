@@ -259,9 +259,8 @@ require([
             const selectedFeature = traconLayer.queryFeatures({
                 where: sqlExp,
                 outFields: ["*"]
-            }).then((features) => {featureSet = features});
-            featureSet.forEach((f) => {
-                console.log(f.feature);
+            }).then((features) => {
+                console.log(typeof(features), features)
             });
         }        
     }

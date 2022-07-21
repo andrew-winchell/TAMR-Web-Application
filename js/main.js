@@ -270,6 +270,7 @@ require([
                 let gidString = globalidSet.join(", ");
                 let gidExp = "parentglobalid IN (" + gidString + ")";
                 ltLayer.definitionExpression = gidExp;
+                rtLayer.definitionExpression = gidExp;
             });
         }       
     }

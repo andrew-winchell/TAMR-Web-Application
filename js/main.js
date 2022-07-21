@@ -244,7 +244,8 @@ require([
     });
 
     function queryRelated(screenPoint) {
-        view.hitTest(screenPoint)
+        view
+            .hitTest(screenPoint)
             .then((response) => {
                 const graphicsHit = response.results?.filter(
                     (hitResult) => hitResult.type ==="graphic" && hitResult.graphic.layer === traconLayer
@@ -274,34 +275,47 @@ require([
             traconLayer.definitionExpression = oidExp;
 
             //query out the selected features to get the globalid
-            traconLayer.queryFeatures({
+            traconLayer
+                .queryFeatures({
                 where: oidExp,
                 outFields: ["globalid"]
-            }).then((feature) => {
-                //for each feature that was selected, pull the global id from attributes and push to array
-                for (let f of feature.features) {
-                    let fGlobalId = f.attributes.globalid
-                    globalidSet.push("'" + fGlobalId + "'");
-                }
+                })
+                .then((feature) => {
+                    //for each feature that was selected, pull the global id from attributes and push to array
+                    for (let f of feature.features) {
+                        let fGlobalId = f.attributes.globalid
+                        globalidSet.push("'" + fGlobalId + "'");
+                    }
                 
-                //stringify the globalidSet array separated with commas
-                let gidString = globalidSet.join(", ");
-                
-                //sql expression to filter lt and rt layers
-                gidExp = "parentglobalid IN (" + gidString + ")";
+                    //stringify the globalidSet array separated with commas
+                    let gidString = globalidSet.join(", ");
+                    
+                    //sql expression to filter lt and rt layers
+                    gidExp = "parentglobalid IN (" + gidString + ")";
 
-                //set definitionExpression to match towers to selected tracon
-                ltLayer.definitionExpression = gidExp;
-                rtLayer.definitionExpression = gidExp;
-                
-                rtLayer
-                    .when(() => {
-                        return rtLayer.queryExtent();
-                    })
-                    .then((response) => {
-                        view.goTo(response.extent);
-                    });
-            });
+                    //set definitionExpression to match towers to selected tracon
+                    ltLayer.definitionExpression = gidExp;
+                    rtLayer.definitionExpression = gidExp;
+                    
+                    let ltExtent, rtExtent;
+                    ltLayer
+                        .when(() => {
+                            return ltLayer.queryExtent();
+                        })
+                        .then((response) => {
+                            ltWidth = response.extent;
+                            console.log(ltExtent);
+                        });
+                    rtLayer
+                        .when(() => {
+                            return ltLayer.queryExtent();
+                        })
+                        .then((response) => {
+                            rtExtent = response.extent;
+                            console.log(rtExtent);
+                        });
+                    view.goTo(max([ltExtent, rtExtent]))
+                });
         }       
     }
 

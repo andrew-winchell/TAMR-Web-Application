@@ -206,9 +206,9 @@ require([
                 })
             ]
         },
-        basemap: basemap,
-        layers: [traconLayer, ltLayer, rtLayer]
+        basemap: basemap
     });
+    map.addLayers([rtLayer, ltLayer, traconLayer]);
 
     const view = new SceneView({
         container: "viewDiv",

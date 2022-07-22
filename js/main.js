@@ -236,6 +236,7 @@ require([
         traconLayer.definitionExpression = "1=1";
         ltLayer.definitionExpression = "1=0";
         rtLayer.definitionExpression = "1=0";
+        homeBtn;
     });
 
     view.on("click", (event) => {

@@ -238,7 +238,7 @@ require([
         rtLayer.definitionExpression = "1=0";
         view.goTo({
             center: [-98.5795, 39.8283],
-            scale: 5
+            zoom: 5
         })
     });
 

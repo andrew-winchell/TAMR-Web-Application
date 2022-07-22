@@ -244,10 +244,10 @@ require([
 
     view.on("click", (event) => {
         clearMap();
-        queryRelated(event);
+        traconHitTest(event);
     });
 
-    function queryRelated(screenPoint) {
+    function traconHitTest(screenPoint) {
         view
             .hitTest(screenPoint)
             .then((response) => {
@@ -260,12 +260,12 @@ require([
                         const objectIds = graphicsHit.graphic.attributes["objectid"];
                         featureSet.push(objectIds)
                     });
-                    filterSelectedLayers(featureSet);
+                    filterTraconRelated(featureSet);
                 }
             });
     }
 
-    function filterSelectedLayers(objectIds) {
+    function filterTraconRelated(objectIds) {
         //run layer filtering if at least one tracon was selected
         if(objectIds.length > 0) {
             let globalidSet = [];

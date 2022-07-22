@@ -237,7 +237,8 @@ require([
         ltLayer.definitionExpression = "1=0";
         rtLayer.definitionExpression = "1=0";
         view.goTo({
-            center: [0,0]
+            center: [-98.5795, 39.8283],
+            scale: 5
         })
     });
 

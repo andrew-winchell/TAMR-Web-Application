@@ -31,7 +31,7 @@ require([
     // Initialize variables
     let highlight, grid;
 
-    //layer symbology
+    //tracon layer symbology
     const traconRender = {
         type: "simple",
         symbol: {
@@ -45,6 +45,7 @@ require([
         }
     };
 
+    //local tower layer symbology
     const ltRender = {
         type: "simple",
         symbol: {
@@ -58,6 +59,7 @@ require([
         }
     };
 
+    //remote tower layer symbology
     const rtRender = {
         type: "simple",
         symbol: {

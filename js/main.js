@@ -236,8 +236,10 @@ require([
         traconLayer.definitionExpression = "1=1";
         ltLayer.definitionExpression = "1=0";
         rtLayer.definitionExpression = "1=0";
-        view.center = [-98.5795, 39.8283];
-        view.zoom = 5;
+        view.goTo = ({
+            center: [-98.5795, 39.8283],
+            zoom: 5
+        });
     });
 
     view.on("click", (event) => {

@@ -304,7 +304,7 @@ require([
                     
                     rtLayer
                         .when(() => {
-                            return ltLayer.queryExtent();
+                            return rtLayer.queryExtent();
                         })
                         .then((response) => {
                             view.goTo(response.extent);

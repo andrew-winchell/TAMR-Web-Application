@@ -236,7 +236,9 @@ require([
         traconLayer.definitionExpression = "1=1";
         ltLayer.definitionExpression = "1=0";
         rtLayer.definitionExpression = "1=0";
-        homeBtn;
+        view.goTo({
+            center: [0,0]
+        })
     });
 
     view.on("click", (event) => {
@@ -297,15 +299,6 @@ require([
                     //set definitionExpression to match towers to selected tracon
                     ltLayer.definitionExpression = gidExp;
                     rtLayer.definitionExpression = gidExp;
-                    
-                    
-                    rtLayer
-                        .when(() => {
-                            return rtLayer.queryExtent();
-                        })
-                        .then((response) => {
-                            view.goTo(response.extent);
-                        });
                 });
         }       
     }

@@ -305,6 +305,7 @@ require([
 
                     const ltExtent = ltLayer.queryExtent()
                     const rtExtent = rtLayer.queryExtent()
+                    console.log(ltExtent, rtExtent)
                     //use extent union() method to combine the lt and rt extents for max extent
                     //use extent expand() method to enlarge the union extent
                     //this will pull the points away from the edge of the extent

@@ -304,10 +304,13 @@ require([
                     rtLayer.definitionExpression = gidExp;
 
                     var ltExtent = ltLayer.queryExtent().then((results) => {
-                        console.log(results.extent)
                         return results.extent
-                    })
-                    console.log(ltExtent)
+                    });
+                    var rtExtent = rtLayer.queryExtent().then((results) => {
+                        return results.extent
+                    });
+
+                    console.log(ltExtent, rtExtent)
                     //use extent union() method to combine the lt and rt extents for max extent
                     //use extent expand() method to enlarge the union extent
                     //this will pull the points away from the edge of the extent

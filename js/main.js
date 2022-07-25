@@ -303,7 +303,14 @@ require([
                     ltLayer.definitionExpression = gidExp;
                     rtLayer.definitionExpression = gidExp;
 
-                    const ltExtent = ltLayer.queryExtent()
+                    const ltExtent = ltLayer
+                                        .when(() => {
+                                            return ltLayer.queryExtent();
+                                        })
+                                        .then((response) => {
+                                            return response.extent;
+                                        });
+                                        
                     const rtExtent = rtLayer.queryExtent()
                     console.log(ltExtent, rtExtent)
                     //use extent union() method to combine the lt and rt extents for max extent
